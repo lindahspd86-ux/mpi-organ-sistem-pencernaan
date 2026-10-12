@@ -1,0 +1,22 @@
+MPI ORGAN SISTEM PENCERNAAN MANUSIA
+====================================
+
+CARA MENJALANKAN
+1. Ekstrak file ZIP.
+2. Buka folder MPI_Sistem_Pencernaan_Manusia.
+3. Klik dua kali index.html atau buka dengan browser (Chrome, Edge, Firefox).
+4. Tidak memerlukan instalasi atau koneksi internet.
+
+ISI MEDIA
+- Apersepsi/pemantik
+- Asesmen awal dengan umpan balik otomatis
+- Materi pokok organ pencernaan utama dan organ pendukung
+- Simulasi interaktif perjalanan makanan
+- Kuis 5 soal dengan skor otomatis
+- Asesmen akhir 5 soal dengan skor otomatis
+- Refleksi dan fitur unduh refleksi dalam TXT
+
+CATATAN
+Media ini merupakan bahan ajar dasar yang dapat disesuaikan guru dengan jenjang kelas,
+kurikulum, dan kebutuhan peserta didik. Nilai pada kuis/asesmen dihitung di browser
+dan tidak dikirim ke server.

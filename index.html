@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MPI - Organ Sistem Pencernaan Manusia</title>
+<style>
+:root{--navy:#17324d;--blue:#2374ab;--teal:#24a19c;--cream:#fffaf0;--gold:#f2c14e;--ink:#203040;--muted:#617386;--white:#fff;--green:#2f855a;--red:#c53030}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#eef5f8;line-height:1.55}
+header{background:linear-gradient(120deg,#17324d,#2374ab 65%,#24a19c);color:white;padding:28px 18px 24px}
+.wrap{max-width:1100px;margin:auto}header h1{margin:0 0 8px;font-size:clamp(1.6rem,4vw,2.5rem)}header p{margin:0;max-width:760px}
+.pill{display:inline-block;background:#ffffff22;border:1px solid #ffffff66;padding:4px 10px;border-radius:30px;font-size:.85rem;margin-bottom:10px}
+nav{display:flex;gap:8px;flex-wrap:wrap;padding:14px 0;position:sticky;top:0;background:#eef5f8;z-index:5}
+nav button,.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;background:var(--navy);color:white}
+nav button{background:white;color:var(--navy);border:1px solid #cbd9e2}nav button.active,nav button:hover{background:var(--blue);color:white}
+main{padding:0 0 35px}.panel{display:none;background:white;border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:0 8px 24px #17324d12;margin:0 0 18px}.panel.active{display:block}
+h2{color:var(--navy);margin-top:0}h3{color:#2374ab}.lead{font-size:1.08rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{border:1px solid #dce7ed;border-radius:15px;padding:16px;background:#fbfdff}.emoji{font-size:2.2rem}.callout{padding:14px 16px;border-left:5px solid var(--gold);background:#fff8df;border-radius:8px;margin:14px 0}
+label{display:block;margin:12px 0 5px;font-weight:650}input[type=text],textarea,select{width:100%;padding:10px;border:1px solid #bacbd6;border-radius:9px;font:inherit}textarea{min-height:90px}
+.question{padding:14px 0;border-bottom:1px solid #e2ebef}.question p{font-weight:700;margin:0 0 8px}.question label{font-weight:400;margin:5px 0;display:flex;gap:8px;align-items:flex-start}
+.feedback{font-weight:700;margin-top:12px}.good{color:var(--green)}.bad{color:var(--red)}
+.organs{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.organ{padding:10px 13px;background:#e8f6f5;border:1px solid #a6d9d5;border-radius:10px;cursor:pointer;font-weight:700}.organ:hover,.organ.selected{background:var(--teal);color:white}
+.track{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}.step{padding:8px 11px;border-radius:20px;background:#e5edf2;color:#607487;font-size:.9rem}.step.on{background:var(--gold);color:#203040;font-weight:800}
+.progress{height:10px;background:#e5edf2;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.small{font-size:.9rem;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:18px}
+button:focus,input:focus,textarea:focus{outline:3px solid #f2c14e;outline-offset:2px}
+@media(max-width:600px){nav{position:static}nav button{flex:1 1 42%}.panel{padding:17px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="pill">MEDIA PEMBELAJARAN INTERAKTIF • IPA</span><h1>Organ Sistem Pencernaan Manusia</h1><p>Jelajahi perjalanan makanan, kenali organ pencernaan, lakukan simulasi, lalu uji pemahamanmu. Belajar aktif, selangkah demi selangkah!</p></div></header>
+<main class="wrap">
+<nav aria-label="Menu pembelajaran">
+<button class="active" data-tab="apersepsi">1. Apersepsi</button><button data-tab="awal">2. Asesmen Awal</button><button data-tab="materi">3. Materi Pokok</button><button data-tab="simulasi">4. Simulasi</button><button data-tab="quis">5. Kuis</button><button data-tab="akhir">6. Asesmen Akhir</button><button data-tab="refleksi">7. Refleksi</button>
+</nav>
+<section id="apersepsi" class="panel active">
+<h2>1. Apersepsi — Dari makanan menjadi energi</h2>
+<p class="lead">Pernahkah kamu bertanya ke mana makanan pergi setelah ditelan?</p>
+<div class="grid"><div class="card"><div class="emoji">🍚</div><h3>Amati</h3><p>Bayangkan kamu makan nasi, sayur, dan telur. Makanan tidak langsung menjadi energi—tubuh perlu memecahnya menjadi zat yang lebih sederhana.</p></div><div class="card"><div class="emoji">💭</div><h3>Pikirkan</h3><p>Organ apa yang pertama kali menerima makanan? Mengapa makanan perlu dikunyah?</p></div><div class="card"><div class="emoji">🗣️</div><h3>Diskusikan</h3><p>Ceritakan pengalamanmu saat mengunyah makanan. Apa yang berubah pada makanan sebelum ditelan?</p></div></div>
+<div class="callout"><b>Tujuan belajar:</b> setelah menyelesaikan MPI ini, kamu dapat menyebutkan organ pencernaan, menjelaskan fungsi utamanya, dan mengurutkan perjalanan makanan dengan benar.</div>
+<label for="jawabAper">Jawaban pemantikmu</label><textarea id="jawabAper" placeholder="Menurut saya, makanan mengalami proses..."></textarea><button class="btn" onclick="saveText('jawabAper','statusAper')">Simpan jawaban</button><span id="statusAper" class="small" aria-live="polite"></span>
+</section>
+<section id="awal" class="panel">
+<h2>2. Asesmen Awal</h2><p>Jawab pertanyaan berikut untuk mengetahui pengetahuan awalmu. Hasil ini bukan nilai akhir.</p>
+<form id="formAwal">
+<div class="question"><p>1. Proses pencernaan makanan dimulai di ...</p><label><input type="radio" name="a1" value="a"> lambung</label><label><input type="radio" name="a1" value="b"> mulut</label><label><input type="radio" name="a1" value="c"> usus besar</label></div>
+<div class="question"><p>2. Organ yang menghubungkan mulut dengan lambung adalah ...</p><label><input type="radio" name="a2" value="a"> kerongkongan</label><label><input type="radio" name="a2" value="b"> usus halus</label><label><input type="radio" name="a2" value="c"> hati</label></div>
+<div class="question"><p>3. Sebagian besar penyerapan sari-sari makanan terjadi di ...</p><label><input type="radio" name="a3" value="a"> usus besar</label><label><input type="radio" name="a3" value="b"> lambung</label><label><input type="radio" name="a3" value="c"> usus halus</label></div>
+<button class="btn" type="button" onclick="grade('formAwal',['b','a','c'],'hasilAwal')">Periksa jawaban</button><div id="hasilAwal" class="feedback" aria-live="polite"></div></form>
+</section>
+<section id="materi" class="panel">
+<h2>3. Materi Pokok — Kenali organ pencernaan</h2><p>Pencernaan adalah proses mengolah makanan menjadi zat yang dapat diserap tubuh. Pencernaan berlangsung secara mekanis (misalnya mengunyah) dan kimiawi (dibantu enzim dan cairan pencernaan).</p>
+<div class="grid">
+<div class="card"><div class="emoji">👄</div><h3>Mulut</h3><p>Gigi mengunyah makanan, lidah membantu mencampur dan menelan, sedangkan air liur membasahi makanan dan mulai memecah pati.</p></div>
+<div class="card"><div class="emoji">〰️</div><h3>Faring dan kerongkongan</h3><p>Faring menjadi jalur saat menelan. Kerongkongan mendorong makanan menuju lambung melalui gerak peristaltik.</p></div>
+<div class="card"><div class="emoji">🫙</div><h3>Lambung</h3><p>Mengaduk makanan dan mencampurnya dengan asam serta enzim, terutama membantu pencernaan protein.</p></div>
+<div class="card"><div class="emoji">🌀</div><h3>Usus halus</h3><p>Melanjutkan pencernaan dan menyerap sebagian besar zat gizi melalui permukaan berjonjot (vili).</p></div>
+<div class="card"><div class="emoji">💧</div><h3>Usus besar</h3><p>Menyerap air dan elektrolit, serta membantu membentuk feses dengan bantuan mikroorganisme.</p></div>
+<div class="card"><div class="emoji">➡️</div><h3>Rektum dan anus</h3><p>Rektum menyimpan feses sementara; anus menjadi jalan keluarnya feses dari tubuh.</p></div>
+</div>
+<h3>Organ pendukung</h3><div class="grid"><div class="card"><b>Hati</b><p>Menghasilkan empedu yang membantu mengemulsikan lemak.</p></div><div class="card"><b>Kantung empedu</b><p>Menyimpan dan memekatkan empedu sebelum dilepaskan ke usus halus.</p></div><div class="card"><b>Pankreas</b><p>Menghasilkan enzim pencernaan dan bikarbonat yang membantu menetralkan asam di usus halus.</p></div></div>
+<div class="callout"><b>Ingat urutannya:</b> Mulut → faring → kerongkongan → lambung → usus halus → usus besar → rektum → anus. Hati, kantung empedu, dan pankreas membantu proses pencernaan, tetapi makanan tidak melewati organ-organ tersebut.</div>
+</section>
+<section id="simulasi" class="panel">
+<h2>4. Simulasi — Ikuti perjalanan makanan</h2><p>Pilih organ untuk melihat apa yang terjadi pada makanan. Gunakan tombol “Langkah berikutnya” untuk mengikuti jalurnya.</p>
+<div class="track" id="track"></div><div class="card"><div class="emoji" id="simEmoji">🍽️</div><h3 id="simTitle">Mulai dari mulut</h3><p id="simDesc">Klik langkah berikutnya untuk memulai perjalanan makanan.</p><p><b>Perubahan pada makanan:</b> <span id="simChange">Belum dimulai</span></p></div>
+<div class="organs" id="organButtons"></div><button class="btn" onclick="nextStep()">Langkah berikutnya →</button> <button class="btn" style="background:#617386" onclick="resetSim()">Ulangi simulasi</button><p class="small" id="simCount"></p>
+</section>
+<section id="quis" class="panel">
+<h2>5. Kuis Interaktif</h2><p>Pilih satu jawaban yang paling tepat. Skor akan muncul setelah kamu memeriksa jawaban.</p>
+<form id="formKuis">
+<div class="question"><p>1. Gerakan yang mendorong makanan di kerongkongan disebut ...</p><label><input type="radio" name="q1" value="a"> difusi</label><label><input type="radio" name="q1" value="b"> peristaltik</label><label><input type="radio" name="q1" value="c"> respirasi</label></div>
+<div class="question"><p>2. Cairan yang dihasilkan hati untuk membantu pencernaan lemak adalah ...</p><label><input type="radio" name="q2" value="a"> empedu</label><label><input type="radio" name="q2" value="b"> air liur</label><label><input type="radio" name="q2" value="c"> insulin</label></div>
+<div class="question"><p>3. Organ yang terutama menyerap air dari sisa makanan adalah ...</p><label><input type="radio" name="q3" value="a"> lambung</label><label><input type="radio" name="q3" value="b"> usus halus</label><label><input type="radio" name="q3" value="c"> usus besar</label></div>
+<div class="question"><p>4. Fungsi utama pankreas dalam pencernaan adalah ...</p><label><input type="radio" name="q4" value="a"> menyimpan feses</label><label><input type="radio" name="q4" value="b"> menghasilkan enzim pencernaan</label><label><input type="radio" name="q4" value="c"> mengunyah makanan</label></div>
+<div class="question"><p>5. Penyerapan sebagian besar zat gizi berlangsung di ...</p><label><input type="radio" name="q5" value="a"> usus halus</label><label><input type="radio" name="q5" value="b"> kerongkongan</label><label><input type="radio" name="q5" value="c"> anus</label></div>
+<button class="btn" type="button" onclick="grade('formKuis',['b','a','c','b','a'],'hasilKuis')">Periksa skor</button><div id="hasilKuis" class="feedback" aria-live="polite"></div></form>
+</section>
+<section id="akhir" class="panel">
+<h2>6. Asesmen Akhir</h2><p>Kerjakan setelah mempelajari materi dan simulasi. Nilai dihitung otomatis.</p>
+<form id="formAkhir">
+<div class="question"><p>1. Urutan perjalanan makanan yang benar adalah ...</p><label><input type="radio" name="f1" value="a"> mulut → lambung → kerongkongan → usus halus</label><label><input type="radio" name="f1" value="b"> mulut → kerongkongan → lambung → usus halus</label><label><input type="radio" name="f1" value="c"> mulut → usus besar → lambung → anus</label></div>
+<div class="question"><p>2. Pencernaan mekanis di mulut terutama dilakukan oleh ...</p><label><input type="radio" name="f2" value="a"> gigi</label><label><input type="radio" name="f2" value="b"> empedu</label><label><input type="radio" name="f2" value="c"> vili</label></div>
+<div class="question"><p>3. Pasangan organ dan fungsi yang tepat adalah ...</p><label><input type="radio" name="f3" value="a"> usus besar — menyerap sebagian besar zat gizi</label><label><input type="radio" name="f3" value="b"> lambung — menghasilkan empedu</label><label><input type="radio" name="f3" value="c"> usus halus — menyerap sebagian besar zat gizi</label></div>
+<div class="question"><p>4. Organ yang menyimpan feses sebelum dikeluarkan adalah ...</p><label><input type="radio" name="f4" value="a"> rektum</label><label><input type="radio" name="f4" value="b"> hati</label><label><input type="radio" name="f4" value="c"> pankreas</label></div>
+<div class="question"><p>5. Mengapa tubuh memerlukan proses pencernaan?</p><label><input type="radio" name="f5" value="a"> agar makanan tetap utuh</label><label><input type="radio" name="f5" value="b"> agar zat makanan dapat diserap dan digunakan tubuh</label><label><input type="radio" name="f5" value="c"> agar semua makanan menjadi air</label></div>
+<button class="btn" type="button" onclick="grade('formAkhir',['b','a','c','a','b'],'hasilAkhir')">Nilai asesmen akhir</button><div id="hasilAkhir" class="feedback" aria-live="polite"></div></form>
+</section>
+<section id="refleksi" class="panel">
+<h2>7. Refleksi Pembelajaran</h2><p>Luangkan waktu untuk menilai proses belajarmu dengan jujur.</p>
+<label for="ref1">Hal baru yang saya pelajari hari ini:</label><textarea id="ref1" placeholder="Saya baru mengetahui bahwa..."></textarea>
+<label for="ref2">Bagian yang paling saya pahami:</label><textarea id="ref2" placeholder="Bagian yang paling saya pahami adalah..."></textarea>
+<label for="ref3">Bagian yang masih membingungkan dan cara saya mempelajarinya:</label><textarea id="ref3" placeholder="Saya masih bingung tentang... Saya akan..."></textarea>
+<label for="ref4">Seberapa yakin kamu memahami materi?</label><select id="ref4"><option value="">Pilih tingkat keyakinan</option><option>Sangat yakin</option><option>Cukup yakin</option><option>Masih perlu latihan</option></select>
+<button class="btn" onclick="downloadReflection()">Unduh refleksi (.txt)</button><p id="refStatus" class="small" aria-live="polite"></p>
+</section>
+</main><footer>MPI IPA • Organ Sistem Pencernaan Manusia | Belajar, jelajahi, refleksikan.</footer>
+<script>
+const tabs=[...document.querySelectorAll('nav button')];
+tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'});}));
+function saveText(id,status){document.getElementById(status).textContent=' Jawaban tersimpan pada halaman ini.';}
+function grade(formId,answers,resultId){const form=document.getElementById(formId);let score=0,answered=0;answers.forEach((a,i)=>{const name=(formId==='formAwal'?'a':formId==='formKuis'?'q':'f')+(i+1);const chosen=form.querySelector('input[name="'+name+'"]:checked');if(chosen){answered++;if(chosen.value===a)score++;}});const el=document.getElementById(resultId);if(answered<answers.length){el.className='feedback bad';el.textContent='Lengkapi semua pertanyaan terlebih dahulu ('+answered+'/'+answers.length+' terjawab).';return;}const n=Math.round(score/answers.length*100);el.className='feedback '+(n>=70?'good':'bad');el.textContent='Skor: '+score+'/'+answers.length+' ('+n+'). '+(n>=80?'Hebat! Pemahamanmu sangat baik.':n>=60?'Bagus, tinjau kembali bagian yang belum tepat.':'Ayo pelajari materi lagi lalu coba kembali.');}
+const steps=[
+{title:'Mulut',emoji:'👄',desc:'Makanan dikunyah oleh gigi dan dicampur dengan air liur. Enzim amilase mulai memecah pati.',change:'Makanan menjadi lebih kecil dan lunak.'},
+{title:'Faring',emoji:'↘️',desc:'Saat menelan, makanan melewati faring. Epiglotis membantu mencegah makanan masuk ke saluran pernapasan.',change:'Makanan diarahkan ke kerongkongan.'},
+{title:'Kerongkongan',emoji:'〰️',desc:'Gerak peristaltik berupa kontraksi otot mendorong makanan menuju lambung.',change:'Bolus bergerak ke lambung.'},
+{title:'Lambung',emoji:'🫙',desc:'Otot lambung mengaduk makanan. Asam lambung dan enzim seperti pepsin membantu pencernaan protein.',change:'Makanan menjadi bubur semi-cair (kimus).' },
+{title:'Usus halus',emoji:'🌀',desc:'Empedu membantu mengemulsikan lemak; enzim dari pankreas dan usus melanjutkan pencernaan. Vili menyerap zat gizi.',change:'Sebagian besar zat gizi diserap ke tubuh.'},
+{title:'Usus besar',emoji:'💧',desc:'Air dan elektrolit diserap. Sisa makanan dipadatkan dengan bantuan mikroorganisme.',change:'Sisa makanan membentuk feses.'},
+{title:'Rektum',emoji:'⏳',desc:'Feses ditampung sementara sebelum dikeluarkan.',change:'Feses disimpan sementara.'},
+{title:'Anus',emoji:'➡️',desc:'Feses dikeluarkan dari tubuh melalui anus.',change:'Perjalanan makanan selesai.'}
+];let current=-1;
+const track=document.getElementById('track'),organButtons=document.getElementById('organButtons');
+steps.forEach((s,i)=>{let t=document.createElement('span');t.className='step';t.id='step'+i;t.textContent=(i+1)+'. '+s.title;track.appendChild(t);let b=document.createElement('button');b.className='organ';b.textContent=s.title;b.onclick=()=>showStep(i);organButtons.appendChild(b);});
+function showStep(i){current=i;const s=steps[i];document.getElementById('simEmoji').textContent=s.emoji;document.getElementById('simTitle').textContent=s.title;document.getElementById('simDesc').textContent=s.desc;document.getElementById('simChange').textContent=s.change;steps.forEach((_,j)=>document.getElementById('step'+j).classList.toggle('on',j===i));[...organButtons.children].forEach((b,j)=>b.classList.toggle('selected',j===i));document.getElementById('simCount').textContent='Langkah '+(i+1)+' dari '+steps.length;}
+function nextStep(){showStep((current+1)%steps.length);}function resetSim(){current=-1;document.getElementById('simEmoji').textContent='🍽️';document.getElementById('simTitle').textContent='Mulai dari mulut';document.getElementById('simDesc').textContent='Klik langkah berikutnya untuk memulai perjalanan makanan.';document.getElementById('simChange').textContent='Belum dimulai';document.getElementById('simCount').textContent='';steps.forEach((_,j)=>document.getElementById('step'+j).classList.remove('on'));[...organButtons.children].forEach(b=>b.classList.remove('selected'));}
+function downloadReflection(){const data=[['Hal baru',document.getElementById('ref1').value],['Paling dipahami',document.getElementById('ref2').value],['Masih membingungkan dan rencana',document.getElementById('ref3').value],['Keyakinan',document.getElementById('ref4').value]].map(x=>x[0]+':\n'+(x[1]||'(belum diisi)')).join('\n\n');const blob=new Blob(['REFLEKSI MPI: ORGAN SISTEM PENCERNAAN MANUSIA\n\n'+data],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Refleksi_Sistem_Pencernaan.txt';a.click();URL.revokeObjectURL(a.href);document.getElementById('refStatus').textContent='Refleksi berhasil disiapkan untuk diunduh.';}
+</script>
+</body></html>
